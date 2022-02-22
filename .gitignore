@@ -118,3 +118,4 @@ ENV/
 lecture_06/assembly.json
 
 output/
+data/*.json
