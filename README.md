@@ -63,44 +63,40 @@ Lectures, tutorials and project-based exercises will focus on:
 
 We use `conda` to make sure we have clean, isolated environment for dependencies.
 
-First time using `conda`? Make sure you run this at least once:
-
-    (base) conda config --add channels conda-forge
-
-Clone this repository and create a new conda environment:
-
-    (base) cd path/to/COMPAS-II-FS2022
-    (base) conda env create -f environment.yml
-    (base) conda activate compas-fs2022
-
-<details><summary>Alternatively, create environment manually</summary>
+<details><summary>First time using <code>conda</code>?</summary>
 <p>
 
-The conda environment can also be manually created:
+Make sure you run this at least once:
 
-    (base) conda create -n compas-fs2022 python=3.8 compas_fab>=0.22 --yes
-    (base) conda activate compas-fs2022
+    (base) conda config --add channels conda-forge
 
 </p>
 </details>
 
+    (base) conda env create -f https://dfab.link/fs2022.yml
+
+### Add to Rhino
+
+    (base)   conda activate fs2022
+    (fs2022) python -m compas_rhino.install -v 7.0
+
+### Get the workshop files
+
+    (fs2022) cd Documents
+    (fs2022) git clone https://github.com/compas-teaching/COMPAS-II-FS2022
+
 ### Verify installation
 
-    (compas-fs2022) python -m compas
+    (fs2022) python -m compas
 
     Yay! COMPAS is installed correctly!
 
-    COMPAS: 1.13.3
-    Python: 3.8.8 | packaged by conda-forge | (default, Feb 20 2021, 15:50:08) [MSC v.1916 64 bit (AMD64)]
-    Extensions: ['compas-cgal', 'compas-fab', 'compas-slicer']
-
-### Install on Rhino
-
-    (compas-fs2022) python -m compas_rhino.install -v 6.0
-    (compas-fs2022) python -m compas_rhino.install -v 7.0
+    COMPAS: 1.14.1
+    Python: 3.8.10 | packaged by conda-forge | (default, May 11 2021, 06:25:23) [MSC v.1916 64 bit (AMD64)]
+    Extensions: ['compas-fab', 'compas-cgal', 'compas-rrc']
 
 ### Update installation
 
 To update your environment:
 
-    (compas-fs2022) conda env update -f environment.yml
+    (fs2022) conda env update -f environment.yml

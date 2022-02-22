@@ -1,4 +1,4 @@
-name: compas-fs2022
+name: fs2022
 channels:
     - conda-forge
 
