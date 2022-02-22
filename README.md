@@ -99,4 +99,4 @@ Make sure you run this at least once:
 
 To update your environment:
 
-    (fs2022) conda env update -f environment.yml
+    (fs2022) conda env update -f https://dfab.link/fs2022.yml
