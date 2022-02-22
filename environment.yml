@@ -8,7 +8,6 @@ dependencies:
    - git
    - compas=1.*
    - compas_fab>=0.22
-   - igl>=2.2.1
-   - compas_cgal>=0.4
+   - compas_cgal>=0.5
    - compas_rrc
    - compas_slicer
