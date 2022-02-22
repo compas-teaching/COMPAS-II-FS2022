@@ -93,7 +93,7 @@ Make sure you run this at least once:
 
     COMPAS: 1.14.1
     Python: 3.8.10 | packaged by conda-forge | (default, May 11 2021, 06:25:23) [MSC v.1916 64 bit (AMD64)]
-    Extensions: ['compas-fab', 'compas-cgal', 'compas-rrc']
+    Extensions: ['compas-fab', 'compas-cgal', 'compas-rrc', 'compas-slicer']
 
 ### Update installation
 
