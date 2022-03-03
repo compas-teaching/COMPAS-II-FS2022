@@ -27,4 +27,4 @@ artist2 = Artist(mesh_projected)
 
 # Draw
 artist1.draw()
-artist2.draw_edges(color="#00ff00")
+artist2.draw_edges(color="#F2F230")
