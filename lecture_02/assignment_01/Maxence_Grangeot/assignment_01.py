@@ -35,6 +35,6 @@ artist2 = Artist(mesh_projected)
 artist1.draw()
 artist1.redraw()
 artist2.draw_edges(color="#00ff00")
-#color doesn't appear green in my shaded viewport (appears black regarless of the HEX value)
-#another appearance issue I have on mac is the RobotArtist in grasshopper doesn't display edges, just a plain color, no shade.
+# Color doesn't appear green in my shaded viewport (appears black regarless of the HEX value)
+# Another appearance issue I have on mac is the RobotArtist in grasshopper doesn't display edges, just a plain color, no shade.
 artist2.redraw()
