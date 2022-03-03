@@ -8,12 +8,12 @@ from compas.datastructures import Mesh
 from compas.geometry import Plane
 
 # Define a Frame, which is not in the origin and a bit tilted to the world frame
-frame = Frame([0.0, 3.0, 15], [2.0, 1.0, 1.0],[-1.0, 2.0, 1.0])
+frame = Frame([0.0, 3.0, 15], [2.0, 1.0, 1.0],[-1.0, 2.0, 1.0]) # random Frame
 
 # Create a Box with that frame
 box = Box(frame, 10, 10, 10)
 # Create a Projection (can be orthogonal, parallel or perspective)
-P = Projection.from_plane(Plane([0,0,0], [0,0,1]))
+P = Projection.from_plane(Plane([0,0,0], [0,0,1])) # projection from top view
 
 # Create a Mesh from the Box
 mesh = Mesh.from_shape(box)
@@ -27,4 +27,4 @@ artist2 = Artist(mesh_projected)
 
 # Draw
 artist1.draw()
-artist2.draw_edges(color="#F2F230")
+artist2.draw_edges(color="#F2F230") # change the color of the edges, doesn't work
