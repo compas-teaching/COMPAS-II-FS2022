@@ -12,8 +12,8 @@ Forward and inverse kinematics of open chain manipulators.
 ## Examples
 
 * Robot Model
-  * [URDF: visualization](201_visualize_model_artist_.py)
-  * [URDF with meshes: visualization](202_visualize_model_with_meshes_artist_.py)
+  * [URDF: visualization](201_visualize_model_artist.py)
+  * [URDF with meshes: visualization](202_visualize_model_with_meshes_artist.py)
   * [Load from local files](203_robot_from_local.py)
   * [Load from Github package](204_robot_from_github.py)
   * [Load from Github package: visualization](205_robot_from_github_artist.py)
