@@ -4,7 +4,6 @@ from compas.geometry import Box
 from compas.geometry import Frame
 from compas.geometry import Plane
 from compas.geometry import Projection
-
 from compas.artists import Artist
 from compas.datastructures import Mesh
 
