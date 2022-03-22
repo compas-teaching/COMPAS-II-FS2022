@@ -12,7 +12,7 @@ services:
       - ros-core
     command:
       - roslaunch
-      - --wait
+      - --wait 
       # To change the robot, select the corresponding package name here, eg. `ur10e_moveit_config`
       - ur3e_moveit_config
       - demo.launch
