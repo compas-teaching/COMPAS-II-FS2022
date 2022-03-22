@@ -16,8 +16,6 @@ def calculate_ik_for_frames(robot, frames):
     previous_config = robot.zero_configuration()
     previous_config.joint_values = (0.15, -2.01, -1.08, -0.97, 1.55, 0.0)
 
-    # used previous ik result as the configuration for next ik calculation
-
     for frame in frames:
         _config = robot.inverse_kinematics(frame, previous_config)
         configs.append(_config)
