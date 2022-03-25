@@ -7,7 +7,7 @@ Using inverse kinematics
 * Taking a robot and a list of frames as parameter, calculate a feasible configuration for each of the frames
 * Try to find an optimal start_configuration for each so that the motion from one config to the next is minimized
 * Store all found configurations in a JSON file using `compas.json_dump` or `compas.json_dumps`
-* Commit the `assignment-03.py` AND the `assignment-03.json` file in your submission
+* Commit the `assignment_03.py` AND the `assignment_03.json` file in your submission
 
 ## How to start
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
         print("Found {} configurations".format(len(configurations)))
 
         # Step 2: store all configurations in a JSON file
-        filename = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'assignment-03.json')
+        filename = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'assignment_03.json')
         store_configurations(configurations, filename)
         print("Stored results in {}".format(filename))
 ```
