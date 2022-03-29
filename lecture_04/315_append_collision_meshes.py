@@ -17,8 +17,8 @@ with RosClient("localhost") as client:
     for i in range(5):
         mesh = Mesh.from_shape(brick)
         cm = CollisionMesh(mesh, "brick_wall")
-        cm.frame.point.y += 0.5
-        cm.frame.point.z += brick.zsize * i
+        cm.frame.point.y = 0.5
+        cm.frame.point.z = brick.zsize * i
 
         scene.append_collision_mesh(cm)
 
