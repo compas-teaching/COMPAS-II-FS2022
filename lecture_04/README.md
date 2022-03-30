@@ -31,6 +31,6 @@ Robot planning: forward and inverse kinematic functions, cartesian and kinematic
 * Planning scene in MoveIt
   * [Planning scene preview in GH](314_planning_scene.ghx)
   * [Add objects to the scene](315_add_collision_mesh.py)
-  * [Append nested objects to the scene](315_append_collision_meshes.py)
-  * [Remove objects from the scene](316_remove_collision_mesh.py)
+  * [Append nested objects to the scene](316_append_collision_meshes.py)
+  * [Remove objects from the scene](317_remove_collision_mesh.py)
 
