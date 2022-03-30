@@ -18,9 +18,12 @@ import json
 #  - Try to find an optimal start_configuration for each so that the motion from one config to the next is minimized
 def calculate_ik_for_frames(robot, frames):
     configs = []
+    start_configuration = Configuration.from_revolute_values([math.pi/2, 0., 0., 0.,0.,0.]) 
+
     for i in range(len(frames)):
-        config = Configuration.from_revolute_values([i * math.pi/2, 0., 0.])
-        config.joint_values
+        # config = Configuration.from_revolute_values([i * math.pi/2, 0., 0., 0.,0.,0.]) 
+        config = robot.inverse_kinematics(frames[i], start_configuration, group=None, return_full_configuration=False, options=None)
+        # config.joint_values
         configs.append(config)
     return configs
 
