@@ -6,6 +6,7 @@ from compas_fab.robots import PlanningScene
 with RosClient("localhost") as client:
     robot = client.load_robot()
     scene = PlanningScene(robot)
+
     scene.remove_collision_mesh("brick_wall")
     scene.remove_collision_mesh("floor")
 

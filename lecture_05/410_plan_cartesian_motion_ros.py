@@ -1,12 +1,10 @@
-import time
-
 from compas_fab.backends import RosClient
+from helpers import show_trajectory
 
-from compas.artists import Artist
 from compas.geometry import Frame
 
 with RosClient("localhost") as client:
-    robot = client.load_robot(load_geometry=True)
+    robot = client.load_robot()
     group = robot.main_group_name
 
     frames = []
@@ -28,12 +26,4 @@ with RosClient("localhost") as client:
     print("following %d%% of requested trajectory." % (trajectory.fraction * 100))
     print("Executing this path at full speed would take approx. %.3f seconds." % trajectory.time_from_start)
 
-    artist = Artist(robot.model)
-
-    for tp in trajectory.points:
-        config = robot.zero_configuration()
-        config.joint_values = tp.joint_values
-        artist.update(config)
-        artist.draw_visual()
-        artist.redraw()
-        time.sleep(0.02)
+    show_trajectory(trajectory)

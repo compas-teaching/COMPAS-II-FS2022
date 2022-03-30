@@ -18,6 +18,7 @@ services:
       - demo.launch
       # To launch the RVIZ GUI, change the following to true
       - use_rviz:=false
+      - pipeline:=ompl
 
   ros-core:
     image: gramaziokohler/ros-noetic-dfab

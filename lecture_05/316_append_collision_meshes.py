@@ -11,10 +11,15 @@ with RosClient("localhost") as client:
     robot = client.load_robot()
     scene = PlanningScene(robot)
 
-    box = Box.from_diagonal([(-0.7, -0.7, 0), (.7, .7, -0.02)])
-    mesh = Mesh.from_shape(box)
-    cm = CollisionMesh(mesh, "floor")
-    scene.add_collision_mesh(cm)
+    brick = Box.from_diagonal([(-0.006, -0.015, 0), (.006, .015, 0.012)])
+
+    for i in range(5):
+        mesh = Mesh.from_shape(brick)
+        cm = CollisionMesh(mesh, "brick_wall")
+        cm.frame.point.y = 0.5
+        cm.frame.point.z = brick.zsize * i
+
+        scene.append_collision_mesh(cm)
 
     # sleep a bit before terminating the client
     time.sleep(1)
