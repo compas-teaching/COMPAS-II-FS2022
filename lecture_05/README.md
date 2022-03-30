@@ -12,7 +12,7 @@ Method for Pick and Place planning.
 
 ## Examples
 
-Make sure you start (`compose up`) the [container with a UR3e planner]((https://github.com/compas-teaching/COMPAS-II-FS2022/blob/main/docker/moveit-noetic/docker-compose.yml)) for these examples.
+Make sure you start (`compose up`) the container with a UR3e planner for these examples.
 
 * Planning scene in MoveIt
   * [Planning scene preview in GH](314_planning_scene.ghx)
