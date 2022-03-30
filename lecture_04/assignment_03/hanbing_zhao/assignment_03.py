@@ -27,7 +27,7 @@ def calculate_ik_for_frames(robot, frames):
 
 # Step 2: store all found configurations in a JSON file using compas.json_dump or compas.json_dumps
 def store_configurations(configurations, filename):
-    compas.json_dump(configurations, 'filename')
+    compas.json_dump(configurations, filename) # not the 'filename'
 
 # Use the following to test from the command line
 # Or copy solution_viewer.ghx next to the folder where you created assignment_03.py to visualize the same in Grasshopper
