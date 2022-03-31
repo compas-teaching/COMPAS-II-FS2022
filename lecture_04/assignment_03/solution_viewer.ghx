@@ -193,6 +193,14 @@
 # Write the code in the assignment_03.py and if
 # the file is located in the same folder as this GH file
 # then Grasshopper will find it and import it
+
+import os
+import sys
+here = os.path.dirname(ghenv.Component.OnPingDocument().FilePath)
+print(here)
+if here not in sys.path:
+   sys.path.append(here)
+
 from compas_ghpython import unload_modules
 unload_modules('assignment_03')
 
