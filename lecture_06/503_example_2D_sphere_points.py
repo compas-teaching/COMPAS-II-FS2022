@@ -33,7 +33,7 @@ def points_on_sphere_generator(sphere):
 
 
 def sphere_generator():
-    sphere = Sphere((0.35, 0, 0), 0.15)
+    sphere = Sphere((0.4, 0, 0), 0.15)
     for x in range(5):
         for z in range(7):
             center = sphere.point + Vector(x, 0, z) * 0.05
