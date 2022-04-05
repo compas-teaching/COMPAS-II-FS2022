@@ -60,4 +60,4 @@ with PyBulletClient(connection_type='direct') as client:
     map = ReachabilityMap()
     map.calculate(generator(), robot, options)
     # save to json
-    map.to_json(os.path.join(DATA, "reachability", "map2D_deviation.json"))
+    map.to_json(os.path.join(DATA, "map2D_deviation.json"))
