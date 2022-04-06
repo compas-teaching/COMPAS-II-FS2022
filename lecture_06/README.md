@@ -23,7 +23,7 @@ Make sure you start (`compose up`) the container with a UR3e planner for the ass
 
 * Assembly model
   * [Assembly for pick'n'place](530_pick_and_place_assembly.py)
-  * [Assembly viewer][531_viewer.ghx]
+  * [Assembly viewer](531_viewer.ghx)
 
 * Reachability Maps
   * [1D Example](501_example_1D.py)
