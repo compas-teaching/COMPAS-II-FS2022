@@ -1,10 +1,10 @@
-from functools import partial
+import functools
 
 import compas_rhino
 
 from compas.utilities import color_to_colordict
 
-colordict = partial(color_to_colordict, colorformat='rgb', normalize=False)
+colordict = functools.partial(color_to_colordict, colorformat='rgb', normalize=False)
 
 def draw_directed_edges(artist, edges=None, color=None):
     node_xyz = artist.node_xyz
