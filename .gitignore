@@ -119,3 +119,4 @@ output/
 data/*.json
 lecture_05/420_pick_and_place.json
 lecture_06/530_pick_and_place_assembly.json
+lecture_07/530_pick_and_place_assembly.json
