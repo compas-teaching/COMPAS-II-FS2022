@@ -6,7 +6,7 @@
 ## How to start
 
 * Copy example `530_pick_and_place_assembly.py` into your assignment folder.
-* Use the file `531_viewer.ghx` in `lecture_06` for visual inspection of the solution.
+* Use the file `531_viewer.ghx` in `lecture_07` for visual inspection of the solution.
 * Tweak the values of the functions that define the assembly to create a new assembly with at least 20 parts.
 * After defining a new parametric assembly, run the code to ensure all parts are solvable.
 * Commit both the Python file (`530_pick_and_place_assembly.py`) and the JSON file (`530_pick_and_place_assembly.json`).
@@ -32,7 +32,7 @@
 
 4. Create a folder with your name and last name, eg. `david_bowie` (make sure it is inside the current assignment folder)
 5. Copy example 530 into the folder created above and use it as starting point code.
-6. For visual inspection, use the file `531_viewer.ghx` in `lecture_06` and select your JSON file.
+6. For visual inspection, use the file `531_viewer.ghx` in `lecture_07` and select your JSON file.
 6. Solve the coding assignment and commit both the Python file (`530_pick_and_place_assembly.py`) and the JSON file (`530_pick_and_place_assembly.json`)
     <details><summary><small>(How do I commit?)</small></summary>
     <p>
@@ -40,7 +40,7 @@
     Usually, commits are done from a visual client or VS code,
     but you can also commit your changes from the command line:
 
-       (fs2022) git add lecture_06/assignment_04/david_bowie/\* && git commit -m "hello world"
+       (fs2022) git add lecture_07/assignment_04/david_bowie/\* && git commit -m "hello world"
 
     
     </p>
