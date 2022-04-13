@@ -8,19 +8,23 @@ from compas_fab.robots import PlanningScene
 from compas_fab.robots import Tool
 
 import compas
-from compas.datastructures import Assembly
 from compas.datastructures import Mesh
-from compas.datastructures import Part
 from compas.geometry import Box
 from compas.geometry import Frame
-from compas.geometry import Polyhedron
 from compas.geometry import Translation
+from compas.topology import breadth_first_ordering
+
+HERE = os.path.dirname(__file__)
+
+# Load assembly
+filename = os.path.join(HERE, '602_assembly_sequenced.json')
+assembly = compas.json_load(filename)
 
 
 def get_tool():
     current_folder = os.path.dirname(__file__)
     mesh = Mesh.from_stl(os.path.join(current_folder, "vacuum_gripper.stl"))
-    frame = Frame([0, 0, 0.07], [1, 0, 0], [0, 1, 0])
+    frame = Frame([0, 0, 0.08], [1, 0, 0], [0, 1, 0])
     tool = Tool(mesh, frame, link_name="wrist_3_link")
     return tool
 
@@ -30,15 +34,12 @@ def get_approach_vector(part_key):
 
 
 def get_pick_frame(part_key):
-    return Frame((0.3, 0.1, 0.05), (-1, 0, 0), (0, 1, 0))
+    return Frame((0.3, 0.1, 0.02), (-1, 0, 0), (0, 1, 0))
 
 
 def get_place_frame(part_key):
-    return Frame((0.4, 0.3, 0.05), (-1, 0, 0), (0, 1, 0))
-
-
-def get_part_frame(part_key):
-    return get_place_frame(part_key).transformed(Translation.from_vector((0, 0, -0.02)))
+    part = assembly.graph.node_attribute(part_key, "part")
+    return part.frame
 
 
 def prepare_scene(robot, part_key):
@@ -46,6 +47,14 @@ def prepare_scene(robot, part_key):
     box = Box.from_diagonal([(-0.7, -0.7, 0), (0.7, 0.7, -0.02)])
     mesh = Mesh.from_shape(box)
     scene.add_collision_mesh(CollisionMesh(mesh, "floor"))
+
+    for k in get_part_sequence():
+        if part_key == k:
+            break
+
+        part = assembly.graph.node_attribute(k, "part")
+        mesh = Mesh.from_shape(part.shape)
+        scene.append_collision_mesh(CollisionMesh(mesh, "brick_wall", frame=part.frame))
 
 
 def get_start_configuration(robot):
@@ -55,12 +64,14 @@ def get_start_configuration(robot):
 
 
 def get_part_shape(part_key):
-    box = Box.from_diagonal([(-0.02, -0.05, 0), (0.02, 0.05, -0.02)])
-    return Polyhedron(*box.to_vertices_and_faces(triangulated=True))
+    part = assembly.graph.node_attribute(part_key, "part")
+    return part.shape
 
 
-def get_number_of_parts():
-    return 2
+def get_part_sequence():
+    root_part_key = "0"
+    sequence = breadth_first_ordering(assembly.graph.adjacency, root_part_key)
+    return sequence
 
 
 def get_tolerance_joints():
@@ -90,13 +101,15 @@ tool = get_tool()
 if tool:
     robot.attach_tool(tool)
 
-assembly = Assembly('picknplace')
 assembly.attributes['start_configuration'] = start_configuration.data
 assembly.attributes['tool'] = tool.data
 
-for i in range(get_number_of_parts()):
-    part_key = str(i)
-    part = Part(part_key, shape=get_part_shape(part_key), frame=get_part_frame(part_key))
+#for part_key in get_part_sequence():
+for part_key in get_part_sequence()[0:4]:   # NOTE: For quick testing, only take the first few parts in the sequence
+    part = assembly.graph.node_attribute(part_key, "part")
+
+    scene = PlanningScene(robot)
+    scene.reset()
     prepare_scene(robot, part_key)
 
     print("Part {}\n--------".format(part_key))
@@ -247,13 +260,14 @@ for i in range(get_number_of_parts()):
     part.attributes["start_trajectory"] = start_trajectory
     print()
 
-    assembly.add_part(part, key=part_key)
 
+scene = PlanningScene(robot)
+scene.remove_collision_mesh("brick_wall")
 
 client.close()
 
 compas.json_dump(
     assembly,
-    os.path.join(os.path.dirname(__file__), "530_pick_and_place_assembly.json"),
+    os.path.join(HERE, "603_assembly_planning.json"),
     pretty=True,
 )

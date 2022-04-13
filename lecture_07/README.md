@@ -18,10 +18,10 @@ Make sure you start (`compose up`) the container with a UR3e planner for the ass
   * [Network concepts](525_network_concepts.py)
   * [Using NetworkX](526_networkx.py)
 
-* Sequence assignments
-  * [Default sequence](601_assign_default_sequence.py)
-  * [Linear sorted sequence](602_assign_linear_sequence.py)
-
-* Assembly model
-  * [Assembly for pick'n'place](530_pick_and_place_assembly.py)
-  * [Assembly viewer](531_viewer.ghx)
+* Assembly
+  * [Assembly design: brick wall](601_assembly_design.ghx)
+  * [Assembly sequence: Default sequence](610_assign_default_sequence.py)
+  * [Assembly sequence: Linear sorted sequence](611_assign_linear_sequence.py)
+  * [Assembly sequence: current sequence](612_assembly_sequence.py)
+  * [Assembly planner](603_assembly_planning.py)
+  * [Assembly solution viewer](605_viewer.ghx)

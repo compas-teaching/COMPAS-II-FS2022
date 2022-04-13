@@ -1,15 +1,18 @@
 # Assignment 04
 
-* Create a simple assembly tweaking the functions of example `530`.
-* Ensure all parts are independently buildable (ie. there are trajectories for all).
+* Define a parametric assembly based on examples `601-612`.
+* Goal 1: Ensure at least 20 parts are independently buildable (ie. there are trajectories for all).
+* Goal 2: Ensure at least 20 parts are buildable taking into account previously built parts.
 
 ## How to start
 
-* Copy example `530_pick_and_place_assembly.py` into your assignment folder.
-* Use the file `531_viewer.ghx` in `lecture_07` for visual inspection of the solution.
-* Tweak the values of the functions that define the assembly to create a new assembly with at least 20 parts.
-* After defining a new parametric assembly, run the code to ensure all parts are solvable.
-* Commit both the Python file (`530_pick_and_place_assembly.py`) and the JSON file (`530_pick_and_place_assembly.json`).
+* Copy examples `601-612` into your assignment folder.
+* Use example `601_assembly_design.ghx` to design a new parametric assembly.
+* Use examples `61x` to assign a sequence to the assembly.
+* Use example `603_assembly_planning.py` to plan all parts.
+* Use example `605_viewer.ghx` for visual inspection of the solutions.
+* Your will end up with 3 JSON files: `601_assembly_design.json`, `602_assembly_sequenced.json` and `603_assembly_planning.json`.
+* Commit all the files in your assignment folder (Python, GH and JSON).
 
 ## Expected result
 
@@ -31,9 +34,8 @@
        (fs2022) git push -u assignments assignment-04
 
 4. Create a folder with your name and last name, eg. `david_bowie` (make sure it is inside the current assignment folder)
-5. Copy example 530 into the folder created above and use it as starting point code.
-6. For visual inspection, use the file `531_viewer.ghx` in `lecture_07` and select your JSON file.
-6. Solve the coding assignment and commit both the Python file (`530_pick_and_place_assembly.py`) and the JSON file (`530_pick_and_place_assembly.json`)
+5. Copy examples `601-612` into the folder created above and use it as starting point code.
+6. Solve the assignment and commit all the files in your assignment folder (Python, GH and JSON).
     <details><summary><small>(How do I commit?)</small></summary>
     <p>
 
