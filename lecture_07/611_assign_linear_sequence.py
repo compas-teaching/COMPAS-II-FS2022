@@ -9,10 +9,6 @@ HERE = os.path.dirname(__file__)
 filename = os.path.join(HERE, '601_assembly_design.json')
 assembly = compas.json_load(filename)
 
-# Reset assembly connectivity
-assembly.graph.edge = {i: {} for i in assembly.graph.nodes()}
-assembly.graph.adjacency = {i: {} for i in assembly.graph.nodes()}
-
 # Define connectivity as a linear sequence of integers
 linear_sequence = sorted(assembly.parts(), key=lambda p: int(p.key))
 for a, b in pairwise(linear_sequence):
@@ -22,4 +18,4 @@ print([part.key for part in linear_sequence])
 
 # Save assembly
 filename = os.path.join(HERE, '602_assembly_sequenced.json')
-compas.json_dump(assembly, filename)
+compas.json_dump(assembly, filename, pretty=True)

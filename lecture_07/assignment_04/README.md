@@ -52,7 +52,7 @@
 
        (fs2022) git push assignments
 
-9. And create a pull request (<small>[What's a pull request?](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)</small>)
+9. And create a pull request (<small>[What's a pull request?](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)</small>)
 
     1. Open your browser and go to your fork
     2. Create the pull request clicking `Compare & pull request` and follow the instructions
