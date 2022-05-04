@@ -1,0 +1,85 @@
+version: '2'
+services:
+  rrc-driver:
+    image: gramaziokohler/ros-noetic-dfab
+    container_name: rrc-driver
+    environment:
+      - ROS_HOSTNAME=rrc-driver
+      - ROS_MASTER_URI=http://ros-core:11311
+    depends_on:
+      - ros-core
+    command:
+      - roslaunch
+      - --wait
+      - compas_rrc_driver
+      - bringup.launch
+      # Real robot (service port)
+      # - robot_ip:=192.168.125.1
+      # RobotStudio simulated robot
+      - robot_ip:=host.docker.internal
+      - robot_streaming_port:=30101
+      - robot_state_port:=30201
+      - namespace:=rob1
+
+  moveit-service:
+    image: gramaziokohler/ros-noetic-dfab
+    container_name: moveit-service
+    environment:
+      - ROS_HOSTNAME=moveit-service
+      - ROS_MASTER_URI=http://ros-core:11311
+      # GUI: To forward the GUI to an external X11 server (eg. XMing), uncomment the following line
+      # - DISPLAY=host.docker.internal:0.0
+    depends_on:
+      - ros-core
+    volumes:
+      - ./abb_irb910sc_support:/root/catkin_ws/src/abb_irb910sc_support
+      - ./abb_irb910sc_3_065_moveit_config:/root/catkin_ws/src/abb_irb910sc_3_065_moveit_config
+      - ./scripts:/root/catkin_ws/scripts
+    command:
+      - roslaunch
+      - --wait
+      - /root/catkin_ws/scripts/demo.launch
+      # To launch the RVIZ GUI, change the following to true
+      - use_rviz:=false
+      - pipeline:=ompl
+
+  ros-core:
+    image: gramaziokohler/ros-noetic-dfab
+    container_name: ros-core
+    ports:
+      - "11311:11311"
+    command:
+      - roscore
+
+  ros-bridge:
+    image: gramaziokohler/ros-noetic-dfab
+    container_name: ros-bridge
+    environment:
+      - "ROS_HOSTNAME=ros-bridge"
+      - "ROS_MASTER_URI=http://ros-core:11311"
+    ports:
+      - "9090:9090"
+    depends_on:
+      - ros-core
+    command:
+      - roslaunch
+      - --wait
+      - rosbridge_server
+      - rosbridge_websocket.launch
+
+  ros-fileserver:
+    image: gramaziokohler/ros-noetic-dfab
+    container_name: ros-fileserver
+    environment:
+      - ROS_HOSTNAME=ros-fileserver
+      - ROS_MASTER_URI=http://ros-core:11311
+    depends_on:
+      - ros-core
+    volumes:
+      - ./abb_irb910sc_support:/root/catkin_ws/src/abb_irb910sc_support
+      - ./abb_irb910sc_3_065_moveit_config:/root/catkin_ws/src/abb_irb910sc_3_065_moveit_config
+    command:
+      - roslaunch
+      - --wait
+      - file_server
+      - file_server.launch
