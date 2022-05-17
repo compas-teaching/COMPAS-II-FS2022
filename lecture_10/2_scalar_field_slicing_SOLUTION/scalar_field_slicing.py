@@ -21,7 +21,7 @@ if __name__ == '__main__':
     mesh = Mesh.from_obj(os.path.join(DATA_PATH, MODEL))
 
     # Create scalar field
-    plane = Plane(Point(0, 0, -30), Vector(0.0, 0.5, 0.5))
+    plane = Plane(Point(0, 0, -30), Vector(0.5, 0.5, 0.0))
     v_coords = [mesh.vertex_coordinates(v_key, axes='xyz') for v_key in mesh.vertices()]
     u = [distance_point_plane(v, plane) for v in v_coords]
 

@@ -19,6 +19,9 @@ from compas_slicer.utilities import save_to_json
 from compas.datastructures import Mesh
 from compas.geometry import Point
 
+# own function
+from my_slicing_texture import create_overhang_texture
+
 # ==============================================================================
 # Logging
 # ==============================================================================
@@ -44,7 +47,7 @@ def main():
     # ==========================================================================
     # Move to origin
     # ==========================================================================
-    move_mesh_to_point(compas_mesh, Point(0,0,0))
+    move_mesh_to_point(compas_mesh, Point(0, 0, 0))
 
     # ==========================================================================
     # Slicing
@@ -58,19 +61,31 @@ def main():
     # ==========================================================================
     # Generate brim / raft
     # ==========================================================================
-    generate_brim(slicer, layer_width=4.0, number_of_brim_offsets=5)
+    # NOTE: Typically you would want to use either a brim OR a raft,
+    # however, in this example both are used to explain the functionality
+    # generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
+    # generate_raft(slicer,
+    #               raft_offset=20,
+    #               distance_between_paths=5,
+    #               direction="xy_diagonal",
+    #               raft_layers=1)
 
     # ==========================================================================
     # Simplify the paths by removing points with a certain threshold
     # change the threshold value to remove more or less points
     # ==========================================================================
-    simplify_paths_rdp(slicer, threshold=0.5)
+    simplify_paths_rdp(slicer, threshold=0.7)
+
+    ############################################################################
+    # INSERT OWN TEXTURE HERE
+    ############################################################################
+    create_overhang_texture(slicer, overhang_distance=15)
 
     # ==========================================================================
     # Smooth the seams between layers
     # change the smooth_distance value to achieve smoother, or more abrupt seams
     # ==========================================================================
-    seams_smooth(slicer, smooth_distance=10)
+    # seams_smooth(slicer, smooth_distance=10)
 
     # ==========================================================================
     # Prints out the info of the slicer
@@ -91,10 +106,10 @@ def main():
     # ==========================================================================
     # Set fabrication-related parameters
     # ==========================================================================
-    set_extruder_toggle(print_organizer, slicer)
-    add_safety_printpoints(print_organizer, z_hop= 10.0)
-    ...
-    ...
+    # set_extruder_toggle(print_organizer, slicer)
+    # add_safety_printpoints(print_organizer, z_hop=10.0)
+    # set_linear_velocity_constant(print_organizer, v=100.0)
+    # set_blend_radius(print_organizer, d_fillet=10.0)
 
     # ==========================================================================
     # Prints out the info of the PrintOrganizer
@@ -104,8 +119,8 @@ def main():
     # ==========================================================================
     # Converts the PrintPoints to data and saves to JSON
     # =========================================================================
-    utils.save_to_json(print_organizer.output_printpoints_dict(), OUTPUT_DIR, 'out_printpoints.json')
-
+    printpoints_data = print_organizer.output_printpoints_dict()
+    utils.save_to_json(printpoints_data, OUTPUT_DIR, 'out_printpoints.json')
 
     end_time = time.time()
     print("Total elapsed time", round(end_time - start_time, 2), "seconds")
