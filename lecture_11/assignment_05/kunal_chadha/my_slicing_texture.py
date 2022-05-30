@@ -9,7 +9,7 @@ def create_overhang_texture(slicer, overhang_distance):
     print("Creating cool texture")
 
     for i, layer in enumerate(slicer.layers):
-        if i % 3 == 0 and i > 0:
+        if i % 4 == 0 and i > 0:
             # for every 5th layer, except for the first layer
             # print(layer)
             for j, path in enumerate(layer.paths):

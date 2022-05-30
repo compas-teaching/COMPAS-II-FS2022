@@ -46,7 +46,7 @@ def main():
     # Load mesh
     # ==========================================================================
     compas_mesh = Mesh.from_obj(os.path.join(DATA, MODEL))
-    # R = Rotation.from_axis_and_angle((0,1,0),0.5)
+    # R = Rotation.from_axis_and_angle((0,1,0),0.5) #wrong import from Rhino
     # compas_mesh.transform(R)
     # ==========================================================================
     # Move to origin
@@ -68,7 +68,7 @@ def main():
     # ==========================================================================
     # NOTE: Typically you would want to use either a brim OR a raft,
     # however, in this example both are used to explain the functionality
-    generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
+    generate_brim(slicer, layer_width=4.0, number_of_brim_offsets=4)
     generate_raft(slicer,
                   raft_offset=10,
                   distance_between_paths=3,
