@@ -11,3 +11,4 @@ dependencies:
    - compas_cgal>=0.4
    - compas_rrc
    - compas_slicer
+   - autobahn<=22.4.0
