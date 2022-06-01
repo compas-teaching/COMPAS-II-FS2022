@@ -30,7 +30,7 @@ jobs:
 
       - name: install
         run: |
-          conda install compas=1.* compas_fab>=0.24 compas_cgal>=0.4 compas_rrc compas_slicer "autobahn<=22.4.0" --yes
+          conda install compas=1.* compas_fab>=0.24 compas_cgal>=0.4 compas_rrc compas_slicer --yes
 
       - name: Verify imports
         run: |
